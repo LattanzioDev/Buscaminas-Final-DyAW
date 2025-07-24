@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscaminas</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <!-- Contenedor principal del juego -->
+    <div class="contenedor-juego">
+        <!-- Encabezado con contador de minas, botón de reinicio y temporizador -->
+        <div class="encabezado-juego">
+            <span id="contadorMinas" class="contador-minas">10</span>
+            <button id="botonReiniciar" class="boton-reiniciar" aria-label="Reiniciar partida">
+                <span id="iconoReiniciar" class="icono-reiniciar">😊</span>
+            </button>
+            <span id="temporizador" class="temporizador">000</span>
+            <select id="selectorDificultad" class="selector-dificultad" aria-label="Seleccionar dificultad">
+                <option value="facil">Fácil</option>
+                <option value="medio">Medio</option>
+                <option value="dificil">Difícil</option>
+            </select>
+        </div>
+        <!-- Tablero generado dinámicamente -->
+        <div id="tablero" class="tablero"></div>
+    </div>
+    <!-- Modal para mensajes de victoria/derrota -->
+    <div id="modalMensaje" class="modal-mensaje oculto" role="dialog" aria-modal="true">
+        <div class="modal-contenido">
+            <span id="mensajeResultado"></span>
+            <button id="botonCerrarModal" class="boton-modal">Cerrar</button>
+        </div>
+    </div>
+    <!-- Modal para ranking -->
+    <div id="modalRanking" class="modal-mensaje oculto" role="dialog" aria-modal="true">
+        <div class="modal-contenido">
+            <h2>Ranking de Partidas</h2>
+            <div class="opciones-ranking">
+                <button id="ordenarPorPuntaje" class="boton-modal">Ordenar por puntaje</button>
+                <button id="ordenarPorFecha" class="boton-modal">Ordenar por fecha</button>
+            </div>
+            <table id="tablaRanking" class="tabla-ranking"></table>
+            <button id="botonCerrarRanking" class="boton-modal">Cerrar</button>
+        </div>
+    </div>
+    <!-- Modal para ingresar nombre de jugador -->
+    <div id="modalNombre" class="modal-mensaje" role="dialog" aria-modal="true">
+        <div class="modal-contenido">
+            <form id="formularioNombre">
+                <label for="inputNombre">Ingrese su nombre (mínimo 3 letras):</label>
+                <input type="text" id="inputNombre" name="inputNombre" maxlength="20" required autocomplete="off">
+                <span id="errorNombre" class="error-input"></span>
+                <button type="submit" class="boton-modal">Comenzar</button>
+            </form>
+        </div>
+    </div>
+    <!-- Barra inferior con enlaces -->
+    <footer class="footer">
+        <a href="contacto.html" class="enlace-footer">Contacto</a>
+        <a href="https://github.com/tuusuario/buscaminas" target="_blank" rel="noopener" class="enlace-footer">Ver en Github</a>
+        <button id="botonRanking" class="boton-modal">Ver Ranking</button>
+        <button id="botonModo" class="boton-modal">Modo Oscuro/Claro</button>
+    </footer>
+    <audio id="sonidoVictoria" src="sonidos/victoria.mp3" preload="auto"></audio>
+    <audio id="sonidoDerrota" src="sonidos/derrota.mp3" preload="auto"></audio>
+    <script src="js/coreJuego.js"></script>
+    <script src="js/manejadoresEventos.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/ranking.js"></script>
+    <script src="js/modales.js"></script>
+    <script src="js/validaciones.js"></script>
+</body>
+</html> 

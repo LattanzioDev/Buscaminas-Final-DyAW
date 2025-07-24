@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Buscaminas</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <div class="contenedor-contacto">
+        <h1>Contacto</h1>
+        <form id="formularioContacto" class="formulario-contacto">
+            <label for="nombreContacto">Nombre:</label>
+            <input type="text" id="nombreContacto" name="nombreContacto" maxlength="30" required autocomplete="off">
+            <span id="errorNombreContacto" class="error-input"></span>
+            <label for="emailContacto">Email:</label>
+            <input type="email" id="emailContacto" name="emailContacto" maxlength="40" required autocomplete="off">
+            <span id="errorEmailContacto" class="error-input"></span>
+            <label for="mensajeContacto">Mensaje:</label>
+            <textarea id="mensajeContacto" name="mensajeContacto" rows="4" maxlength="200" required></textarea>
+            <span id="errorMensajeContacto" class="error-input"></span>
+            <button type="submit" class="boton-modal">Enviar</button>
+        </form>
+        <a href="index.html" class="boton-volver">Volver al juego</a>
+    </div>
+    <script src="js/contacto.js"></script>
+</body>
+</html> 

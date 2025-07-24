@@ -1,0 +1,379 @@
+/*
+    estilos.css - Estilos principales para Buscaminas
+    Autor: Estudiante
+    Descripción: Estilos modernos, responsivos, modo claro/oscuro, uso de Flexbox.
+*/
+
+:root {
+    --color-fondo: #f4f4f4;
+    --color-primario: #1976d2;
+    --color-secundario: #fff;
+    --color-texto: #222;
+    --color-borde: #bdbdbd;
+    --color-celda: #e0e0e0;
+    --color-celda-revelada: #fafafa;
+    --color-celda-mina: #e53935;
+    --color-celda-bandera: #ffd600;
+    --color-modal-fondo: rgba(0,0,0,0.5);
+    --color-modal: #fff;
+    --color-error: #e53935;
+    --color-footer: #222;
+    --color-footer-texto: #fff;
+    --color-celda-hover: #bbdefb;
+}
+
+[data-modo="oscuro"] {
+    --color-fondo: #181818;
+    --color-primario: #90caf9;
+    --color-secundario: #222;
+    --color-texto: #fff;
+    --color-borde: #424242;
+    --color-celda: #333;
+    --color-celda-revelada: #222;
+    --color-celda-mina: #d32f2f;
+    --color-celda-bandera: #ffd600;
+    --color-modal: #222;
+    --color-footer: #111;
+    --color-footer-texto: #fff;
+    --color-celda-hover: #1976d2;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contenedor-juego {
+    max-width: 420px;
+    margin: 40px auto 0 auto;
+    background: var(--color-secundario);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 24px 16px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.encabezado-juego {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.contador-minas, .temporizador {
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: var(--color-celda);
+    border-radius: 6px;
+    padding: 6px 16px;
+    border: 2px solid var(--color-borde);
+    min-width: 48px;
+    text-align: center;
+}
+
+/* Corregir alineación de la cara feliz */
+.boton-reiniciar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-celda);
+    border: 2px solid var(--color-borde);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    padding: 0;
+    position: relative;
+}
+.icono-reiniciar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 2rem;
+    margin: 0 auto;
+    line-height: 1;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(8, 36px);
+    grid-template-rows: repeat(8, 36px);
+    gap: 4px;
+    background: var(--color-borde);
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+.celda {
+    width: 36px;
+    height: 36px;
+    background: var(--color-celda);
+    border: 2px solid var(--color-borde);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s, color 0.2s;
+}
+.celda:hover {
+    background: var(--color-celda-hover);
+}
+.celda.revelada {
+    background: var(--color-celda-revelada);
+    cursor: default;
+}
+.celda.mina {
+    background: var(--color-celda-mina);
+    color: #fff;
+}
+.celda.bandera {
+    background: var(--color-celda-bandera);
+    color: #222;
+}
+.celda.numero1 { color: #1976d2; }
+.celda.numero2 { color: #388e3c; }
+.celda.numero3 { color: #d32f2f; }
+.celda.numero4 { color: #7b1fa2; }
+.celda.numero5 { color: #fbc02d; }
+.celda.numero6 { color: #0288d1; }
+.celda.numero7 { color: #c2185b; }
+.celda.numero8 { color: #616161; }
+
+/* Mejorar modal para tableros grandes */
+.modal-mensaje {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--color-modal-fondo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+.modal-mensaje.oculto {
+    display: none;
+}
+.modal-contenido {
+    background: var(--color-modal);
+    padding: 40px 32px;
+    border-radius: 16px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+    min-width: 320px;
+    max-width: 90vw;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (min-width: 700px) {
+    .modal-contenido {
+        min-width: 400px;
+        max-width: 520px;
+    }
+}
+.boton-modal {
+    margin-top: 12px;
+    background: var(--color-primario);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+}
+.boton-modal:hover {
+    background: #1565c0;
+    color: #fff;
+}
+
+/* Footer más estético */
+.footer {
+    width: 100%;
+    background: linear-gradient(90deg, var(--color-primario) 0%, var(--color-footer) 100%);
+    color: var(--color-footer-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 0 18px 0;
+    margin-top: 32px;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    font-size: 1.08rem;
+}
+.enlace-footer, .footer .boton-modal {
+    color: var(--color-footer-texto);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s, background 0.2s;
+    background: none;
+    border: none;
+    padding: 0 8px;
+    font-size: inherit;
+    cursor: pointer;
+}
+.enlace-footer:hover, .footer .boton-modal:hover {
+    color: var(--color-celda-bandera);
+    background: var(--color-primario);
+    border-radius: 4px;
+}
+
+/* Formulario de contacto más moderno */
+.contenedor-contacto {
+    max-width: 440px;
+    margin: 48px auto;
+    background: var(--color-secundario);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    padding: 40px 32px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.formulario-contacto {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.formulario-contacto label {
+    font-weight: 500;
+    margin-bottom: 2px;
+    color: var(--color-primario);
+    text-align: left;
+}
+.formulario-contacto input,
+.formulario-contacto textarea {
+    padding: 10px 12px;
+    border: 1.5px solid var(--color-borde);
+    border-radius: 8px;
+    font-size: 1.08rem;
+    background: var(--color-celda);
+    color: var(--color-texto);
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+    border: 1.5px solid var(--color-primario);
+    outline: none;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+}
+.formulario-contacto textarea {
+    resize: vertical;
+    min-height: 80px;
+    max-height: 200px;
+}
+.boton-volver {
+    margin-top: 18px;
+    background: var(--color-celda-bandera);
+    color: #222;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 1.08rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(251,192,45,0.08);
+    text-decoration: none;
+    display: inline-block;
+}
+.boton-volver:hover {
+    background: var(--color-primario);
+    color: #fff;
+}
+
+/* Ranking */
+.tabla-ranking {
+    width: 100%;
+    margin-top: 12px;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+}
+.tabla-ranking th, .tabla-ranking td {
+    border: 1px solid var(--color-borde);
+    padding: 6px 8px;
+    text-align: center;
+}
+.opciones-ranking {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .contenedor-juego, .contenedor-contacto {
+        max-width: 98vw;
+        padding: 10px 2vw;
+    }
+    .tablero {
+        grid-template-columns: repeat(8, 8vw);
+        grid-template-rows: repeat(8, 8vw);
+        padding: 2vw;
+    }
+    .celda {
+        width: 8vw;
+        height: 8vw;
+        font-size: 1rem;
+    }
+    .formulario-contacto input,
+    .formulario-contacto textarea {
+        font-size: 1rem;
+        padding: 8px 8px;
+    }
+    .boton-modal, .boton-volver {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+}
+
+.selector-dificultad {
+    margin-left: 12px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1.5px solid var(--color-borde);
+    background: var(--color-celda);
+    color: var(--color-texto);
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border 0.2s;
+}
+.selector-dificultad:focus {
+    border: 1.5px solid var(--color-primario);
+    outline: none;
+}
+@media (max-width: 600px) {
+    .selector-dificultad {
+        font-size: 0.95rem;
+        padding: 4px 6px;
+    }
+} 
