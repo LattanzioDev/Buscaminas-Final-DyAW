@@ -18,7 +18,6 @@ Buscaminas es un juego clásico desarrollado en HTML5, CSS3 y JavaScript (ES5), 
 - `css/` — Hojas de estilo (reset y estilos principales)
 - `js/` — Archivos JavaScript (core del juego, UI, eventos, ranking, validaciones, modales, contacto)
 - `img/` — Imágenes y favicon
-- `sonidos/` — Efectos de sonido (victoria, derrota)
 
 ## Instalación y ejecución
 1. Descarga o clona el repositorio.
