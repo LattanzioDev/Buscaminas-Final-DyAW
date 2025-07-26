@@ -7,6 +7,7 @@ function renderizarTablero() {
     contenedor.innerHTML = "";
     contenedor.style.gridTemplateColumns = "repeat(" + columnas + ", 36px)";
     contenedor.style.gridTemplateRows = "repeat(" + filas + ", 36px)";
+    contenedor.style.maxWidth = "98vw"; // No desbordar pantalla
     var i, j, celda, divCelda;
     for (i = 0; i < filas; i++) {
         for (j = 0; j < columnas; j++) {
@@ -77,4 +78,4 @@ function aplicarModoGuardado() {
 }
 
 document.getElementById("botonModo").addEventListener("click", alternarModoOscuro);
-document.addEventListener("DOMContentLoaded", aplicarModoGuardado); 
+document.addEventListener("DOMContentLoaded", aplicarModoGuardado);

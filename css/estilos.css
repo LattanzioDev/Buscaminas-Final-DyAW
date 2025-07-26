@@ -53,7 +53,6 @@ body {
 }
 
 .contenedor-juego {
-    max-width: 420px;
     margin: 40px auto 0 auto;
     background: var(--color-secundario);
     border-radius: 12px;
@@ -62,14 +61,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: auto;
+    min-width: min-content;
+    max-width: 98vw;
+    overflow-x: auto;
 }
 
 .encabezado-juego {
-    width: 100%;
+    width: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;      
     align-items: center;
     margin-bottom: 16px;
+    gap: 24px;                    
 }
 
 .contador-minas, .temporizador {
@@ -119,6 +123,9 @@ body {
     border-radius: 8px;
     padding: 8px;
     margin-bottom: 12px;
+    width: auto;
+    max-width: 98vw;        
+    box-sizing: border-box; 
 }
 
 .celda {
@@ -168,6 +175,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: auto;
     z-index: 1000;
     min-width: 100vw;
     min-height: 100vh;
@@ -176,22 +184,25 @@ body {
     display: none;
 }
 .modal-contenido {
-    background: var(--color-modal);
-    padding: 40px 32px;
-    border-radius: 16px;
-    box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+    background: linear-gradient(135deg, var(--color-modal) 80%, #e3f2fd 100%);
+    padding: 48px 32px 36px 32px;
+    border-radius: 22px;
+    box-shadow: 0 6px 32px rgba(25, 118, 210, 0.13), 0 1.5px 8px rgba(0,0,0,0.08);
     min-width: 320px;
-    max-width: 90vw;
+    max-width: 94vw;
     width: 100%;
     max-width: 420px;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 12px;
+    border: 1.5px solid var(--color-borde);
+    transition: box-shadow 0.2s, border 0.2s;
 }
 @media (min-width: 700px) {
     .modal-contenido {
-        min-width: 400px;
+       min-width: 400px;
         max-width: 520px;
     }
 }
@@ -246,12 +257,12 @@ body {
 
 /* Formulario de contacto más moderno */
 .contenedor-contacto {
-    max-width: 440px;
+    max-width: 420px;
     margin: 48px auto;
     background: var(--color-secundario);
-    border-radius: 16px;
-    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
-    padding: 40px 32px 32px 32px;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(25,118,210,0.10);
+    padding: 36px 28px 28px 28px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -260,35 +271,58 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 10px; /* Menos espacio entre elementos */
 }
 .formulario-contacto label {
     font-weight: 500;
-    margin-bottom: 2px;
     color: var(--color-primario);
+    margin-bottom: 2px;
+    margin-top: 10px;
     text-align: left;
+    letter-spacing: 0.01em;
+    font-size: 1.04rem;
+    transition: color 0.2s;
 }
 .formulario-contacto input,
 .formulario-contacto textarea {
-    padding: 10px 12px;
-    border: 1.5px solid var(--color-borde);
-    border-radius: 8px;
+    padding: 11px 14px;
+    border: 1.7px solid var(--color-borde);
+    border-radius: 10px;
     font-size: 1.08rem;
     background: var(--color-celda);
     color: var(--color-texto);
     transition: border 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+    margin-bottom: 2px;
 }
 .formulario-contacto input:focus,
 .formulario-contacto textarea:focus {
-    border: 1.5px solid var(--color-primario);
+    border: 1.7px solid var(--color-primario);
     outline: none;
-    box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+    box-shadow: 0 2px 12px rgba(25,118,210,0.10);
 }
 .formulario-contacto textarea {
     resize: vertical;
     min-height: 80px;
     max-height: 200px;
+}
+.error-input {
+    min-height: 18px;
+    color: var(--color-error);
+    font-size: 0.98rem;
+    margin-bottom: -6px;
+    margin-top: 0;
+    text-align: left;
+    width: 100%;
+    display: block;
+    word-break: break-word;
+    transition: color 0.2s;
+}
+.formulario-contacto .boton-modal {
+    margin-top: 18px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
 }
 .boton-volver {
     margin-top: 18px;
@@ -327,6 +361,123 @@ body {
     gap: 12px;
     justify-content: center;
     margin-bottom: 8px;
+}
+
+/* --- MODAL NOMBRE DE JUGADOR --- */
+.formulario-nombre-jugador {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.input-nombre-jugador {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 16px;
+    border: 1.8px solid var(--color-borde);
+    border-radius: 12px;
+    font-size: 1.12rem;
+    background: var(--color-celda);
+    color: var(--color-texto);
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+
+.input-nombre-jugador:focus {
+    border: 1.8px solid var(--color-primario);
+    outline: none;
+    box-shadow: 0 2px 12px rgba(25,118,210,0.10);
+}
+
+.label-nombre-jugador {
+    font-weight: 500;
+    color: var(--color-primario);
+    margin-bottom: 2px;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+}
+
+.error-nombre-jugador {
+    min-height: 20px; 
+    color: var(--color-error);
+    font-size: 0.98rem;
+    margin-top: 2px;
+    margin-bottom: -8px;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+    transition: color 0.2s;
+    display: block;
+    word-break: break-word;
+}
+
+/* El botón siempre queda fijo debajo */
+.formulario-nombre-jugador .boton-modal {
+    margin-top: 18px;
+    width: 100%;
+    max-width: 320px;
+}
+
+/* Moderniza el formulario del nombre del jugador */
+#formularioNombre {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 8px;
+}
+
+#formularioNombre label {
+    font-weight: 500;
+    color: var(--color-primario);
+    margin-bottom: 2px;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+}
+
+#inputNombre {
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 16px;
+    border: 1.8px solid var(--color-borde);
+    border-radius: 12px;
+    font-size: 1.12rem;
+    background: var(--color-celda);
+    color: var(--color-texto);
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+
+#inputNombre:focus {
+    border: 1.8px solid var(--color-primario);
+    outline: none;
+    box-shadow: 0 2px 12px rgba(25,118,210,0.10);
+}
+
+#errorNombre {
+    min-height: 20px; /* Reserva espacio para el error */
+    color: var(--color-error);
+    font-size: 0.98rem;
+    margin-top: 2px;
+    margin-bottom: -8px;
+    text-align: left;
+    width: 100%;
+    max-width: 320px;
+    transition: color 0.2s;
+    display: block;
+    word-break: break-word;
+}
+
+#formularioNombre .boton-modal {
+    margin-top: 18px;
+    width: 100%;
+    max-width: 320px;
 }
 
 /* Responsividad */
@@ -376,4 +527,4 @@ body {
         font-size: 0.95rem;
         padding: 4px 6px;
     }
-} 
+}

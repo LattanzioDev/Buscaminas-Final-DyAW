@@ -292,4 +292,3 @@ function chording(fila, columna) {
         }
     }
 }
-// ... El resto de la lógica se completará en los siguientes pasos ... 

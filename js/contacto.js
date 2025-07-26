@@ -36,14 +36,30 @@ function manejarEnvioContacto(evento) {
         mostrarError("errorMensajeContacto", "");
     }
     if (valido) {
-        // Enviar por mailto
+        // Construir mailto
         var asunto = encodeURIComponent("Contacto Buscaminas");
-        var cuerpo = encodeURIComponent("Nombre: " + nombre + "\nEmail: " + email + "\nMensaje: " + mensaje);
-        window.location.href = "mailto:?subject=" + asunto + "&body=" + cuerpo;
+        var cuerpo = encodeURIComponent(
+            "Nombre: " + nombre +
+            "\nEmail: " + email +
+            "\nMensaje: " + mensaje
+        );
+        // Crear un enlace temporal y hacer click
+        var mailto = "mailto:valenlattanzio@gmail.com?subject=" + asunto + "&body=" + cuerpo;
+        var enlace = document.createElement("a");
+        enlace.href = mailto;
+        enlace.style.display = "none";
+        document.body.appendChild(enlace);
+        enlace.click();
+        document.body.removeChild(enlace);
+
+        // Opcional: mostrar mensaje si no se abre el cliente de correo
+        setTimeout(function() {
+            alert("Si no se abrió tu cliente de correo, por favor envía el mensaje manualmente a: valenlattanzio@gmail.com");
+        }, 1000);
     }
 }
 
 // Muestra mensaje de error en el input correspondiente
 function mostrarError(id, mensaje) {
     document.getElementById(id).textContent = mensaje;
-} 
+}

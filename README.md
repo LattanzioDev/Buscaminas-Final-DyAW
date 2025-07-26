@@ -32,4 +32,4 @@ Completa el formulario en la página de contacto para comunicarte con el desarro
 Este proyecto es de uso educativo y libre.
 
 ---
-[Ver en Github](https://github.com/LattanzioDev/Buscaminas-Final-DyAW) 
+[Ver en Github](https://github.com/tuusuario/buscaminas) 
