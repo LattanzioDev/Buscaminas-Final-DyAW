@@ -17,8 +17,6 @@ Buscaminas es un juego clásico desarrollado en HTML5, CSS3 y JavaScript (ES5), 
 - `contacto.html` — Página de contacto
 - `css/` — Hojas de estilo (reset y estilos principales)
 - `js/` — Archivos JavaScript (core del juego, UI, eventos, ranking, validaciones, modales, contacto)
-- `img/` — Imágenes y favicon
-- `sonidos/` — Efectos de sonido (victoria, derrota)
 
 ## Instalación y ejecución
 1. Descarga o clona el repositorio.
@@ -32,4 +30,4 @@ Completa el formulario en la página de contacto para comunicarte con el desarro
 Este proyecto es de uso educativo y libre.
 
 ---
-[Ver en Github](https://github.com/tuusuario/buscaminas) 
+[Ver en Github](https://github.com/LattanzioDev/Buscaminas-Final-DyAW) 
