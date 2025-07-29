@@ -1,0 +1,33 @@
+# Archivos y carpetas del sistema operativo
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.old
+*.orig
+*.db
+*.sqlite
+*.sqlite3
+.env
+.cache/
+.librarymanager/
+
+# Archivos de sistema Windows
+NTUSER.*
+AppData/
+Contacts/
+Desktop.ini
+Favorites/
+Links/
+Music/
+OneDrive/
+Pictures/
+Saved Games/
+Searches/
+Videos/ 
