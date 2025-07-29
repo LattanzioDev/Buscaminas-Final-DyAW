@@ -1,7 +1,5 @@
 "use strict";
-// manejadoresEventos.js - Manejadores de eventos del Buscaminas
 
-// Inicializa los listeners principales del juego
 function inicializarEventos() {
     var tableroDiv = document.getElementById("tablero");
     tableroDiv.addEventListener("click", manejarClickCelda);

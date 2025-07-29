@@ -1,6 +1,5 @@
 "use strict";
-// coreJuego.js - Lógica principal del Buscaminas
-// Todas las variables globales del juego
+
 var tablero = [];
 var filas = 8;
 var columnas = 8;
@@ -16,7 +15,6 @@ var dificultad = "facil";
 
 // Estructura de una celda del tablero
 function crearCelda(fila, columna) {
-    // Devuelve un objeto celda con sus propiedades
     var celda = {
         fila: fila,
         columna: columna,
@@ -159,7 +157,7 @@ function alternarBandera(fila, columna) {
     }
 }
 
-// Verifica si el jugador ha ganado
+// Verifica si el jugador gano
 function verificarVictoria() {
     var i, j;
     for (i = 0; i < filas; i++) {
@@ -175,7 +173,6 @@ function verificarVictoria() {
 
 // Calcula el puntaje de la partida
 function calcularPuntaje() {
-    // Ejemplo: mayor puntaje por victoria rápida y menos banderas usadas
     var base = 1000;
     var penalizacionTiempo = tiempo * 2;
     var penalizacionBanderas = banderasColocadas * 5;
@@ -229,27 +226,11 @@ function terminarJuego(gano) {
     guardarPartidaRanking(nombreJugador, puntaje, gano, tiempo);
     // Mostrar modal de victoria o derrota desde modales.js
     if (gano) {
-        mostrarModalMensaje("¡Ganaste la partida!");
+        mostrarModalMensaje("¡Felicitaciones, Ganaste la partida!");
         reproducirSonidoVictoria();
     } else {
         mostrarModalMensaje("¡Perdiste! Pisaste una mina.");
         reproducirSonidoDerrota();
-    }
-}
-
-// Reproducir sonidos
-function reproducirSonidoVictoria() {
-    var audio = document.getElementById("sonidoVictoria");
-    if (audio) {
-        audio.currentTime = 0;
-        audio.play();
-    }
-}
-function reproducirSonidoDerrota() {
-    var audio = document.getElementById("sonidoDerrota");
-    if (audio) {
-        audio.currentTime = 0;
-        audio.play();
     }
 }
 

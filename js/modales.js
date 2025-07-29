@@ -1,5 +1,4 @@
 "use strict";
-// modales.js - Funciones para mostrar y ocultar modales
 
 // Muestra el modal de mensaje (victoria/derrota)
 function mostrarModalMensaje(mensaje) {

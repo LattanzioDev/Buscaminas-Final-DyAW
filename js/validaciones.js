@@ -1,7 +1,6 @@
 "use strict";
-// validaciones.js - Funciones de validación para formularios y entradas
 
-// Valida el nombre del jugador (mínimo 3 letras, solo letras y espacios)
+// Valida el nombre del jugador 
 function validarNombreJugador(nombre) {
     if (typeof nombre !== "string") {
         return false;
@@ -16,7 +15,7 @@ function validarEmail(email) {
     return regex.test(email);
 }
 
-// Valida el mensaje del contacto (más de 5 caracteres)
+// Valida el mensaje del contacto 
 function validarMensaje(mensaje) {
     return typeof mensaje === "string" && mensaje.length > 5;
 } 

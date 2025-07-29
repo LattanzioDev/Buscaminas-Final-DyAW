@@ -1,5 +1,4 @@
 "use strict";
-// ui.js - Funciones para actualizar la interfaz de usuario del Buscaminas
 
 // Renderiza el tablero en el DOM
 function renderizarTablero() {

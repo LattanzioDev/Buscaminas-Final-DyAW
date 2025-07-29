@@ -1,5 +1,4 @@
 "use strict";
-// ranking.js - Lógica para el ranking de partidas y LocalStorage
 
 // Guarda una partida en LocalStorage
 function guardarPartidaRanking(nombre, puntaje, gano, tiempo) {
@@ -25,7 +24,7 @@ function obtenerRanking() {
     return [];
 }
 
-// Devuelve la fecha y hora actual en formato legible
+// Devuelve la fecha y hora actual en formato DD/MM/YYYY
 function obtenerFechaHoraActual() {
     var ahora = new Date();
     var dia = ("0" + ahora.getDate()).slice(-2);

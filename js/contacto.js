@@ -1,5 +1,4 @@
 "use strict";
-// contacto.js - Validación del formulario de contacto
 
 document.addEventListener("DOMContentLoaded", function() {
     var formulario = document.getElementById("formularioContacto");
@@ -52,7 +51,6 @@ function manejarEnvioContacto(evento) {
         enlace.click();
         document.body.removeChild(enlace);
 
-        // Opcional: mostrar mensaje si no se abre el cliente de correo
         setTimeout(function() {
             alert("Si no se abrió tu cliente de correo, por favor envía el mensaje manualmente a: valenlattanzio@gmail.com");
         }, 1000);
