@@ -58,7 +58,7 @@ function manejarEnvioContacto(evento) {
         document.body.removeChild(enlace);
 
         setTimeout(function() {
-            alert("Si no se abrió tu cliente de correo, por favor envía el mensaje manualmente a: valenlattanzio@gmail.com");
+        mostrarModalMensaje("Si no se abrió tu cliente de correo, por favor envía el mensaje manualmente a: <strong>valenlattanzio@gmail.com</strong>");
         }, 1000);
     }
 }
@@ -68,3 +68,4 @@ function mostrarError(id, mensaje) {
     document.getElementById(id).textContent = mensaje;
 
 }
+
