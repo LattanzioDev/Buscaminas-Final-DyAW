@@ -2,6 +2,12 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     var formulario = document.getElementById("formularioContacto");
+    var modo = localStorage.getItem("buscaminasModo");
+    if (modo === "oscuro") {
+        document.body.setAttribute("data-modo", "oscuro");
+    } else {
+        document.body.setAttribute("data-modo", "claro");
+    }
     formulario.addEventListener("submit", manejarEnvioContacto);
 });
 
@@ -60,4 +66,5 @@ function manejarEnvioContacto(evento) {
 // Muestra mensaje de error en el input correspondiente
 function mostrarError(id, mensaje) {
     document.getElementById(id).textContent = mensaje;
+
 }
