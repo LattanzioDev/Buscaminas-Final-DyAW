@@ -273,3 +273,15 @@ function chording(fila, columna) {
         }
     }
 }
+
+function reproducirSonidoVictoria() {
+    var sonido = document.getElementById("sonidoVictoria");
+    sonido.currentTime = 0; // Reinicia el sonido por si ya se había reproducido
+    sonido.play();
+}
+
+function reproducirSonidoDerrota() {
+    var sonido = document.getElementById("sonidoDerrota");
+    sonido.currentTime = 0;
+    sonido.play();
+}
